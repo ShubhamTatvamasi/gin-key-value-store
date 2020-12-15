@@ -31,7 +31,7 @@ kubectl patch svc gin-key-value-store \
 
 ### Test Set and Get methods via curl command
 
-Set the key
+Set key value pair
 ```bash
 curl -X POST -d "key=name&value=shubham" localhost
 
@@ -39,7 +39,7 @@ curl -X POST -d "key=name&value=shubham" localhost
 curl -X POST -d "key=name&value=shubham" http://k8s.shubhamtatvamasi.com:30000
 ```
 
-Get the value from key store
+Get value from key store
 ```bash
 curl "localhost/?key=name"
 
