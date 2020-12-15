@@ -34,9 +34,15 @@ kubectl patch svc gin-key-value-store \
 Set the key
 ```bash
 curl -X POST -d "key=name&value=shubham" localhost
+
+# Test on live server
+curl -X POST -d "key=name&value=shubham" http://k8s.shubhamtatvamasi.com:30000
 ```
 
 Get the value from key store
 ```bash
 curl "localhost/?key=name"
+
+# Test on live server
+curl "http://k8s.shubhamtatvamasi.com:30000/?key=name"
 ```
