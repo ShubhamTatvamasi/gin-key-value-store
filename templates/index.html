@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gin Key Value Store</title>
+</head>
+<body>
+
+    <h1>
+        {{ .key }}
+    </h1>
+
+	<div id="subscriptions"></div>
+
+	<script type="text/javascript">
+
+	    // Create a new EventSource
+	    let source = new EventSource('/stream/');
+
+		source.onmessage = (e) => {
+
+			let subscriptions = JSON.parse(e.data);
+
+			console.log(subscriptions);
+
+			let table = "<table>";
+
+			for (var k in subscriptions ) {
+				table += "<tr><td>"+k+"</td><td>"+subscriptions[k]+"</td></tr>";
+			}
+			table += "</table>"
+
+			document.getElementById("subscriptions").innerHTML = table;
+
+		}
+		
+
+	</script>
+
+</body>
+</html>
