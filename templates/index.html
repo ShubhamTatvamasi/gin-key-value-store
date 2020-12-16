@@ -5,15 +5,43 @@
 </head>
 <body>
 
-   <!-- Get Value from Server for a key -->
-   <input type="text" id="newKey" name="key" placeholder='Key'>
-   <input type="submit" value="Get Value" onclick="return getKey();"> 
+   <div>
+      <h3>Set Value</h3>
 
-   <!-- Update Value on page -->
-   <div id="key"></div>
+      <!-- Set Key Value Pair -->
+      <input type="text" id="setNewKey" name="key" placeholder='Key'>
+      <input type="text" id="setNewValue" name="value" placeholder='Value'>
+      <input type="submit" value="Set Key Value" onclick="return setKeyValue();"> 
 
-   <!-- Update Subscriptions -->
-   <div id="subscriptions"></div>
+   </div>
+
+   <div>
+      <h3>Get Value</h3>
+
+      <!-- Get Value from Server for a key -->
+      <input type="text" id="newKey" name="key" placeholder='Key'>
+      <input type="submit" value="Get Value" onclick="return getValue();"> 
+
+      <!-- Update Value on page -->
+      <div id="key"></div>
+   </div>
+
+   <div>
+      <h3>Subscribe Key for live updates</h3>
+
+      <!-- Subscribe Key -->
+      <input type="text" id="subscribeKey" name="key" placeholder='Key'>
+      <input type="submit" value="Subscribe Key" onclick="return subscribeKey();"> 
+
+   </div>
+
+   <div>
+      <h3>Subscriptions</h3>
+
+      <!-- Live Subscriptions -->
+      <div id="subscriptions"></div>
+
+   </div>
 
    <script src="assets/index.js"></script>
 

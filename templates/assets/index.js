@@ -1,6 +1,19 @@
+// Set Key Value Pair
+async function setKeyValue() {
+
+    let formData = new FormData();
+
+    let setNewKey = document.getElementById('setNewKey').value
+    let setNewValue = document.getElementById('setNewValue').value
+    
+    formData.append('key', setNewKey);
+    formData.append('value', setNewValue);
+
+    await fetch('/post', { method: 'POST', body: formData })
+}
 
 // Get value from key
-async function getKey() {
+async function getValue() {
 
     let keyFromUser = document.getElementById('newKey').value
 
@@ -10,7 +23,19 @@ async function getKey() {
     document.getElementById("key").innerHTML = newKey;
 }
 
-// Create a new EventSource for a live stream
+// Subscribe New Key
+async function subscribeKey() {
+
+    let formData = new FormData();
+
+    let subscribeNewKey = document.getElementById('subscribeKey').value
+    
+    formData.append('key', subscribeNewKey);
+
+    await fetch('/subscribe', { method: 'POST', body: formData })
+}
+
+// Create a new EventSource for a Live Subscriptions
 let source = new EventSource('/stream/');
 
 // Function for updating subscriptions
