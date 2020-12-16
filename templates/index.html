@@ -1,17 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-	<title>Gin Key Value Store</title>
+<meta charset="utf-8">
+
+<link rel="icon" href="images/tt.png">
+
+
+<title>Grofers</title>
+
+<link href="page1.css" rel="stylesheet">
+
+
+
+
+<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+
+
+
+
+
 </head>
 <body>
 
-    <h1>
-        {{ .key }}
-    </h1>
 
-	<div id="subscriptions"></div>
+<picture id="qr_Picture1" style="position:absolute;left:157px;top:9px;z-index:9">
+<img src="grow.png" id="Picture1"  alt="" srcset="">
+</picture>
 
-	<script type="text/javascript">
+
+
+
+<style>
+
+
+
+.button{
+  background-color: #008CBA; /* blue */
+  border: 2px solid #008CBA;
+  color: white;
+  padding: 6px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+
+
+#Layer3
+{
+   background-color: #FFFFFF;
+   background-image: none;
+   box-shadow: 0px 0px 3px #000000;
+}
+
+
+#Layer4
+{
+   background-color: #FFFFFF;
+   background-image: none;
+   box-shadow: 0px -2px 4px #FF4200;
+}
+
+</style>
+
+
+<div id="Layer1_Container" style="width:80%;position:relative;margin-left:auto;margin-right:auto;">
+
+
+
+
+<div id="Layer3" style="position:absolute;text-align:left;left:0px;top:159px;width:327px;height:296px;z-index:12;">
+
+<div id="qr_Input" style="position:absolute;left:130px;top:8px;width:95px;height:39px;z-index:18;">
+<span style="color:#404040;font-family:'Bookman Old Style';font-size:27px;">Form</span></div>
+
+
+<input type="text" id="text_name" style="position:absolute;left:61px;top:66px;width:193px;height:27px;z-index:1;" name="Editbox1" value="" spellcheck="false" placeholder="Name">
+<input type="text" id="text_username" style="position:absolute;left:61px;top:116px;width:193px;height:27px;z-index:5;" name="Editbox1" value="" spellcheck="false" placeholder="Username">
+
+
+<div id="image_save" style="position:absolute;left:117px;top:169px;width:229px;height:31px;z-index:13">
+<button id="submit_f" class="button">Submit</button>
+
+</div>
+
+</div>
+
+
+
+
+<div id="Layer3" style="position:absolute;text-align:left;left:0px;top:469px;width:327px;height:206px;z-index:12;">
+
+<div id="qr_Input" style="position:absolute;left:98px;top:8px;width:95px;height:39px;z-index:18;">
+<span style="color:#404040;font-family:'Bookman Old Style';font-size:27px;">Subscribe</span></div>
+
+
+<input type="text" id="text_username_s" style="position:absolute;left:61px;top:86px;width:193px;height:27px;z-index:1;" name="Editbox1" value="" spellcheck="false" placeholder="Username">
+
+
+
+<div id="image_save" style="position:absolute;left:110px;top:139px;width:229px;height:31px;z-index:13">
+<button id="submit_s" class="button">Subscribe</button>
+
+</div>
+
+</div>
+
+
+
+<div id="Layer4" style="position:absolute;text-align:left;left:450px;top:159px;width:497px;height:506px;z-index:12;">
+
+<div id="qr_Input" style="position:absolute;left:171px;top:18px;width:95px;height:39px;z-index:18;">
+<span style="color:#404040;font-family:'Bookman Old Style';font-size:27px;">Subscribers</span></div>
+
+<div id="qr_Input" style="position:absolute;left:171px;top:78px;width:95px;height:39px;z-index:18;">
+
+<script type="text/javascript">
 
 	    // Create a new EventSource
 	    let source = new EventSource('/stream/');
@@ -35,6 +146,26 @@
 		
 
 	</script>
+</div>
 
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<script type="text/javascript" src="route.js"></script>
 </body>
 </html>
