@@ -36,7 +36,7 @@ async function subscribeKey() {
 }
 
 // Create a new EventSource for a Live Subscriptions
-let source = new EventSource('/stream/');
+let source = new EventSource('/stream');
 
 // Function for updating subscriptions
 source.onmessage = (e) => {
