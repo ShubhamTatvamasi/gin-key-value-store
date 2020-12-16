@@ -34,9 +34,9 @@ func TestGetValueWithData(t *testing.T) {
 
 	// Set a key with data
 	w1 := httptest.NewRecorder()
-	req, _ := http.NewRequest("POST", "/post", strings.NewReader(newKeyValue))
-	req.Header.Set("Content-Type", "application/x-www-form-urlencoded; param=value")
-	router.ServeHTTP(w1, req)
+	req1, _ := http.NewRequest("POST", "/post", strings.NewReader(newKeyValue))
+	req1.Header.Set("Content-Type", "application/x-www-form-urlencoded; param=value")
+	router.ServeHTTP(w1, req1)
 
 	// Check the data output
 	w2 := httptest.NewRecorder()
