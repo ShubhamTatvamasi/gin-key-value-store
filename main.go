@@ -7,7 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func main() {
+// Setup Router for Gin Server
+func setupRouter() *gin.Engine {
 
 	// Store all key value pairs in map
 	store := map[string]string{}
@@ -81,5 +82,11 @@ func main() {
 
 	})
 
+	return r
+}
+
+func main() {
+	// Start Gine Web Server
+	r := setupRouter()
 	r.Run(":80")
 }
