@@ -16,13 +16,19 @@ func main() {
 
 	// Route the gin web server
 	r := gin.Default()
-	r.LoadHTMLGlob("templates/*")
+
+	// Serve static files
+	r.Static("/assets", "./templates/assets")
+
+	// Render index.html file
+	r.LoadHTMLGlob("templates/index.html")
 
 	// Home page
 	r.GET("/", func(c *gin.Context) {
 
+		// Sending empty string, so redering nothing.
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"key": store[c.Query("key")],
+			"": "",
 		})
 
 	})
