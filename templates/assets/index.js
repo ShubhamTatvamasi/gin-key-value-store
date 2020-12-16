@@ -47,7 +47,7 @@ source.onmessage = (e) => {
     // Creating new table for subscribed key value pairs
     let table = "<table>";
 
-    for (var k in subscriptions ) {
+    for (let k in subscriptions ) {
         table += "<tr><td>"+k+"</td><td>"+subscriptions[k]+"</td></tr>";
     }
     table += "</table>"
