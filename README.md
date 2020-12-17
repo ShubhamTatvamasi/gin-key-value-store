@@ -37,7 +37,7 @@ docker run --rm -it shubhamtatvamasi/gin-key-value-store go test
 Deploy on Kubernetes:
 ```bash
 kubectl run gin-key-value-store --port=80 --expose \
-  --image=shubhamtatvamasi/gin-key-value-store:0.3.1
+  --image=shubhamtatvamasi/gin-key-value-store:0.3.2
 
 kubectl patch svc gin-key-value-store \
   --patch='{"spec": {"type": "NodePort"}}'
@@ -49,7 +49,7 @@ kubectl patch svc gin-key-value-store \
 Update the container image on pod:
 ```bash
 kubectl set image po gin-key-value-store \
-  gin-key-value-store=shubhamtatvamasi/gin-key-value-store:0.3.1
+  gin-key-value-store=shubhamtatvamasi/gin-key-value-store:0.3.2
 ```
 
 Delete deployment:
