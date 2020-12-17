@@ -7,6 +7,10 @@
 [![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/shubhamtatvamasi/gin-key-value-store/latest)](https://hub.docker.com/r/shubhamtatvamasi/gin-key-value-store)
 [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/shubhamtatvamasi/gin-key-value-store)](https://hub.docker.com/r/shubhamtatvamasi/gin-key-value-store)
 
+- [Test using Docker](#test-using-docker)
+- [Test on Kubernetes](#test-on-kubernetes)
+- [Test via curl](#test-via-curl)
+
 ### Test using Docker
 
 Build docker image locally:
@@ -18,6 +22,13 @@ Run using docker:
 ```bash
 docker run --rm -it -p 80:80 shubhamtatvamasi/gin-key-value-store
 ```
+
+Run unit tests:
+```bash
+docker run --rm -it shubhamtatvamasi/gin-key-value-store go test
+```
+
+---
 
 ### Test on Kubernetes
 
@@ -39,14 +50,14 @@ kubectl set image po gin-key-value-store \
   gin-key-value-store=shubhamtatvamasi/gin-key-value-store:0.3.1
 ```
 
-Delete deployment
+Delete deployment:
 ```bash
 kubectl delete po/gin-key-value-store svc/gin-key-value-store
 ```
 
 ---
 
-### Test Set and Get methods via curl command
+### Test via curl
 
 Set key value pair
 ```bash
