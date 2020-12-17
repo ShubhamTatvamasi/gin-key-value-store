@@ -7,6 +7,8 @@
 [![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/shubhamtatvamasi/gin-key-value-store/latest)](https://hub.docker.com/r/shubhamtatvamasi/gin-key-value-store)
 [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/shubhamtatvamasi/gin-key-value-store)](https://hub.docker.com/r/shubhamtatvamasi/gin-key-value-store)
 
+### Test Live Platform: http://k8s.shubhamtatvamasi.com:30000
+
 - [Test using Docker](#test-using-docker)
 - [Test on Kubernetes](#test-on-kubernetes)
 - [Test via curl](#test-via-curl)
@@ -59,7 +61,7 @@ kubectl delete po/gin-key-value-store svc/gin-key-value-store
 
 ### Test via curl
 
-Set key value pair
+Set key value pair:
 ```bash
 curl -X POST -d "key=name&value=shubham" localhost/post
 
@@ -67,7 +69,7 @@ curl -X POST -d "key=name&value=shubham" localhost/post
 curl -X POST -d "key=name&value=shubham" http://k8s.shubhamtatvamasi.com:30000/post
 ```
 
-Get value from key store
+Get value from key store:
 ```bash
 curl "localhost/get?key=name"
 
@@ -75,7 +77,7 @@ curl "localhost/get?key=name"
 curl "http://k8s.shubhamtatvamasi.com:30000/get?key=name"
 ```
 
-Subscribe for a key
+Subscribe for a key:
 ```bash
 curl -X POST -d "key=name" localhost/subscribe
 
