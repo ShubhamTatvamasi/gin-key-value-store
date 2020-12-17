@@ -25,20 +25,20 @@ func TestGetValueEmpty(t *testing.T) {
 }
 
 // Test key after putting value
-func TestGetValueWithData(t *testing.T) {
+func TestGetValueWithValue(t *testing.T) {
 
 	newKeyValue := "key=name&value=shubham"
 
 	gin.SetMode(gin.ReleaseMode)
 	router := setupRouter()
 
-	// Set a key with data
+	// Set a key with value
 	w1 := httptest.NewRecorder()
 	req1, _ := http.NewRequest("POST", "/post", strings.NewReader(newKeyValue))
 	req1.Header.Set("Content-Type", "application/x-www-form-urlencoded; param=value")
 	router.ServeHTTP(w1, req1)
 
-	// Check the data output
+	// Check the value output
 	w2 := httptest.NewRecorder()
 	req2, _ := http.NewRequest("GET", "/get?key=name", nil)
 	router.ServeHTTP(w2, req2)

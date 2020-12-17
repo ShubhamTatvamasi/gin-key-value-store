@@ -37,6 +37,7 @@ func setupRouter() *gin.Engine {
 	// Get function for getting a specfic value for a key
 	r.GET("/get", func(c *gin.Context) {
 
+		// Return Value
 		c.String(200, store[c.Query("key")])
 
 	})
@@ -48,6 +49,7 @@ func setupRouter() *gin.Engine {
 		value := c.PostForm("value")
 		store[key] = value
 
+		// Return Key=Value
 		c.String(200, key+"="+value)
 
 	})
@@ -58,6 +60,7 @@ func setupRouter() *gin.Engine {
 		key := c.PostForm("key")
 		subscription[key] = struct{}{}
 
+		// Return subscribed key
 		c.String(200, key)
 
 	})
@@ -65,19 +68,22 @@ func setupRouter() *gin.Engine {
 	// Keep connection alive for any updated on subscription
 	r.GET("/stream", func(c *gin.Context) {
 
-		// // Add heders for setting Server Sent Events
+		// Add header for setting Server Sent Events to live stream
 		w := c.Writer
 		w.Header().Set("Content-Type", "text/event-stream")
 
 		keyValues := make(map[string]interface{})
 
+		// Collect of subscribed key values
 		for key := range subscription {
 			keyValues[key] = store[key]
 		}
 
+		// Package all keys in JSON
 		empData, _ := json.Marshal(keyValues)
 		jsonString := string(empData)
 
+		// Send JSON back to live stream
 		w.Write([]byte("data:" + jsonString + "\n\n"))
 
 	})
