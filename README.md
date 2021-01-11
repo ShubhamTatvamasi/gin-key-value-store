@@ -46,6 +46,29 @@ kubectl patch svc gin-key-value-store \
   --patch='{"spec": {"ports": [{"nodePort": 30000, "port": 80}]}}'
 ```
 
+Ingress value for gin-key-value-store
+```bash
+kubectl apply -f - << EOF
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: gin-key-value-store
+spec:
+  tls:
+    - hosts:
+      - gin-key-value-store.k8s.shubhamtatvamasi.com
+      secretName: letsencrypt
+  rules:
+    - host: gin-key-value-store.k8s.shubhamtatvamasi.com
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: gin-key-value-store
+            servicePort: 80
+EOF
+```
+
 Update the container image on pod:
 ```bash
 kubectl set image po gin-key-value-store \
