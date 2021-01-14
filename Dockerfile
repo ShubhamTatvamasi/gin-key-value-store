@@ -1,15 +1,19 @@
-FROM golang:1.15.6-alpine
+FROM golang:1.15.6-alpine as builder
 
-COPY . .
+COPY go.mod  go.sum  main.go ./
 
-ENV GOPATH=
+RUN CGO_ENABLED=0 GOPATH= go build main.go
 
-ENV CGO_ENABLED=0
+FROM alpine
 
-RUN go build main.go
+WORKDIR /opt/app
+
+COPY --from=builder /go/main /opt/app
+
+COPY ./templates /opt/app/templates
 
 ENV GIN_MODE=release
 
 EXPOSE 80
 
-CMD ["/go/main"]
+CMD ["./main"]
