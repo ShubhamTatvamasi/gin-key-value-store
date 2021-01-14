@@ -1,6 +1,6 @@
 FROM golang:1.15.6-alpine as builder
 
-COPY go.mod  go.sum  main.go ./
+COPY go.mod go.sum main.go ./
 
 RUN CGO_ENABLED=0 GOPATH= go build main.go
 
