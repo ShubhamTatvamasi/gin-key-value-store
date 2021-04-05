@@ -34,6 +34,40 @@ docker run --rm -it shubhamtatvamasi/gin-key-value-store go test
 
 ### Test on Kubernetes
 
+
+create a deployment and service:
+```bash
+kubectl create deployment gin-key-value-store --image=shubhamtatvamasi/gin-key-value-store
+kubectl expose deployment gin-key-value-store --port=80 --name=gin-key-value-store
+```
+
+Ingress value for gin-key-value-store
+```bash
+kubectl apply -f - << EOF
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: gin-key-value-store
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  tls:
+    - hosts:
+      - gin-key-value-store.k8s.shubhamtatvamasi.com
+      secretName: gin-key-value-store-tls
+  rules:
+    - host: gin-key-value-store.k8s.shubhamtatvamasi.com
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: gin-key-value-store
+            servicePort: 80
+EOF
+```
+
+#### NodePort
+
 Deploy on Kubernetes:
 ```bash
 kubectl run gin-key-value-store --port=80 --expose \
@@ -44,29 +78,6 @@ kubectl patch svc gin-key-value-store \
 
 kubectl patch svc gin-key-value-store \
   --patch='{"spec": {"ports": [{"nodePort": 30000, "port": 80}]}}'
-```
-
-Ingress value for gin-key-value-store
-```bash
-kubectl apply -f - << EOF
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: gin-key-value-store
-spec:
-  tls:
-    - hosts:
-      - gin-key-value-store.k8s.shubhamtatvamasi.com
-      secretName: letsencrypt
-  rules:
-    - host: gin-key-value-store.k8s.shubhamtatvamasi.com
-      http:
-        paths:
-        - path: /
-          backend:
-            serviceName: gin-key-value-store
-            servicePort: 80
-EOF
 ```
 
 Update the container image on pod:
