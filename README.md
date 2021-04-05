@@ -7,7 +7,7 @@
 [![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/shubhamtatvamasi/gin-key-value-store/latest)](https://hub.docker.com/r/shubhamtatvamasi/gin-key-value-store)
 [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/shubhamtatvamasi/gin-key-value-store)](https://hub.docker.com/r/shubhamtatvamasi/gin-key-value-store)
 
-### Test Live Platform: http://k8s.shubhamtatvamasi.com:30000
+### Test Live Platform: https://keyvaluestore.k8s.shubhamtatvamasi.com
 
 - [Test using Docker](#test-using-docker)
 - [Test on Kubernetes](#test-on-kubernetes)
@@ -44,25 +44,28 @@ kubectl expose deployment gin-key-value-store --port=80 --name=gin-key-value-sto
 Ingress value for gin-key-value-store
 ```bash
 kubectl apply -f - << EOF
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: gin-key-value-store
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
+    cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
   tls:
-    - hosts:
-      - gin-key-value-store.k8s.shubhamtatvamasi.com
-      secretName: gin-key-value-store-tls
+  - hosts:
+      - keyvaluestore.k8s.shubhamtatvamasi.com
+    secretName: gin-key-value-store-tls
   rules:
-    - host: gin-key-value-store.k8s.shubhamtatvamasi.com
-      http:
-        paths:
-        - path: /
-          backend:
-            serviceName: gin-key-value-store
-            servicePort: 80
+  - host: keyvaluestore.k8s.shubhamtatvamasi.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: gin-key-value-store
+            port:
+              number: 80
 EOF
 ```
 
