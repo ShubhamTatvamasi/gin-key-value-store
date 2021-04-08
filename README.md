@@ -69,6 +69,10 @@ spec:
 EOF
 ```
 
+```bash
+kubectl delete deploy/gin-key-value-store svc/gin-key-value-store ing/gin-key-value-store
+```
+
 #### NodePort
 
 Deploy on Kubernetes:
