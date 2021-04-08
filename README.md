@@ -49,7 +49,7 @@ kind: Ingress
 metadata:
   name: gin-key-value-store
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-staging
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
   - hosts:
