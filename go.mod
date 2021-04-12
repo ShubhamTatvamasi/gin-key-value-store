@@ -1,8 +1,8 @@
 module github.com/ShubhamTatvamasi/gin-key-value-store
 
-go 1.15
+go 1.16
 
 require (
-	github.com/gin-gonic/gin v1.6.3
-	github.com/stretchr/testify v1.6.1
+	github.com/gin-gonic/gin v1.7.1
+	github.com/stretchr/testify v1.7.0
 )
