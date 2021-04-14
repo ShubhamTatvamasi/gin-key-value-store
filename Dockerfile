@@ -1,8 +1,14 @@
 FROM golang:1.16.3-alpine as builder
 
-COPY go.mod go.sum main.go ./
+COPY . .
 
-RUN CGO_ENABLED=0 GOPATH= go build main.go
+ENV CGO_ENABLED=0
+
+ENV GOPATH=
+
+RUN go build -o main
+
+RUN go test
 
 FROM alpine
 
