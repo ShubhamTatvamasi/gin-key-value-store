@@ -35,6 +35,18 @@ async function subscribeKey() {
     await fetch('/subscribe', { method: 'POST', body: formData })
 }
 
+// Unsubscribe a Key
+async function unsubscribeKey() {
+
+    let formData = new FormData();
+
+    let subscribeNewKey = document.getElementById('unsubscribeKey').value
+    
+    formData.append('key', subscribeNewKey);
+
+    await fetch('/unsubscribe', { method: 'POST', body: formData })
+}
+
 // Create a new EventSource for a Live Subscriptions
 let source = new EventSource('/stream');
 

@@ -65,6 +65,17 @@ func setupRouter() *gin.Engine {
 
 	})
 
+	// Unsubscribe key
+	r.POST("/unsubscribe", func(c *gin.Context) {
+
+		key := c.PostForm("key")
+		delete(subscription, key)
+
+		// Return unsubscribed key
+		c.String(200, key)
+
+	})
+
 	// Keep connection alive for any updated on subscription
 	r.GET("/stream", func(c *gin.Context) {
 
