@@ -82,3 +82,21 @@ func TestSubscribeKey(t *testing.T) {
 	assert.Equal(t, 200, w.Code)
 	assert.Equal(t, "name", w.Body.String())
 }
+
+// Test Unsubscribe Key
+func TestUnsubscribeKey(t *testing.T) {
+
+	newKeyValue := "key=name"
+
+	gin.SetMode(gin.ReleaseMode)
+	router := setupRouter()
+
+	w := httptest.NewRecorder()
+	req, _ := http.NewRequest("POST", "/unsubscribe", strings.NewReader(newKeyValue))
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded; param=value")
+
+	router.ServeHTTP(w, req)
+
+	assert.Equal(t, 200, w.Code)
+	assert.Equal(t, "name", w.Body.String())
+}
