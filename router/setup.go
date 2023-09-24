@@ -27,7 +27,7 @@ func SetupRouter() *gin.Engine {
 	// Home page
 	r.GET("/", root)
 
-	// Get function for getting a specfic value for a key
+	// Get function for getting a specific value for a key
 	r.GET("/get", get)
 
 	// Post function for adding or updating values
