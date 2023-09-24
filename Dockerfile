@@ -1,4 +1,4 @@
-FROM golang:1.21.0-alpine as builder
+FROM golang:1.21.1-alpine as builder
 
 COPY . .
 
@@ -10,13 +10,9 @@ RUN go build -o main
 
 RUN go test
 
-FROM alpine
+FROM scratch
 
-WORKDIR /opt/app
-
-COPY --from=builder /go/main /opt/app
-
-COPY ./templates /opt/app/templates
+COPY --from=builder /go/main .
 
 ENV GIN_MODE=release
 

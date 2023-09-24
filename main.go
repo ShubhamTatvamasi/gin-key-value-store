@@ -1,11 +1,15 @@
 package main
 
 import (
+	"embed"
 	"encoding/json"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
+
+//go:embed templates/*
+var templates embed.FS
 
 // Setup Router for Gin Server
 func setupRouter() *gin.Engine {
@@ -21,16 +25,18 @@ func setupRouter() *gin.Engine {
 	// Serve static files
 	r.Static("/assets", "./templates/assets")
 
-	// Render index.html file
-	r.LoadHTMLGlob("templates/index.html")
-
 	// Home page
 	r.GET("/", func(c *gin.Context) {
 
-		// Sending empty string, so redering nothing.
-		c.HTML(http.StatusOK, "index.html", gin.H{
-			"": "",
-		})
+		// Read the contents of index.html from the embedded filesystem
+		indexHTML, err := templates.ReadFile("templates/index.html")
+		if err != nil {
+			c.AbortWithError(http.StatusInternalServerError, err)
+			return
+		}
+
+		// Sending empty string, so rendering nothing.
+		c.Data(http.StatusOK, "text/html; charset=utf-8", indexHTML)
 
 	})
 
