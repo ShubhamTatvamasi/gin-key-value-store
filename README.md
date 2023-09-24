@@ -3,6 +3,7 @@
 [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/shubhamtatvamasi/gin-key-value-store?sort=semver)](https://hub.docker.com/r/shubhamtatvamasi/gin-key-value-store)
 [![Docker Image Size (tag)](https://img.shields.io/docker/image-size/shubhamtatvamasi/gin-key-value-store/latest)](https://hub.docker.com/r/shubhamtatvamasi/gin-key-value-store)
 [![Docker Pulls](https://img.shields.io/docker/pulls/shubhamtatvamasi/gin-key-value-store)](https://hub.docker.com/r/shubhamtatvamasi/gin-key-value-store)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ShubhamTatvamasi/gin-key-value-store)](https://goreportcard.com/report/github.com/ShubhamTatvamasi/gin-key-value-store)
 
 ### Test Live Platform: https://keyvaluestore.k8s.shubhamtatvamasi.com
 
