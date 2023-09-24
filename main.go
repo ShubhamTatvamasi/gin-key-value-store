@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/ShubhamTatvamasi/gin-key-value-store/routes"
+	"github.com/ShubhamTatvamasi/gin-key-value-store/router"
 )
 
 func main() {
-	// Start Gine Web Server
-	r := routes.SetupRouter()
+	// Start Gin Web Server
+	r := router.SetupRouter()
 	r.Run(":80")
 }

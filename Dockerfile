@@ -6,9 +6,9 @@ ENV CGO_ENABLED=0
 
 ENV GOPATH=
 
-RUN go build -o main
-
 RUN go test
+
+RUN go build -o main
 
 FROM scratch
 
