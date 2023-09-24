@@ -6,6 +6,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/ShubhamTatvamasi/gin-key-value-store/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 )
@@ -14,7 +15,7 @@ import (
 func TestGetValueEmpty(t *testing.T) {
 
 	gin.SetMode(gin.ReleaseMode)
-	router := setupRouter()
+	router := routes.SetupRouter()
 
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("GET", "/get?key=name", nil)
@@ -30,7 +31,7 @@ func TestGetValueWithValue(t *testing.T) {
 	newKeyValue := "key=name&value=shubham"
 
 	gin.SetMode(gin.ReleaseMode)
-	router := setupRouter()
+	router := routes.SetupRouter()
 
 	// Set a key with value
 	w1 := httptest.NewRecorder()
@@ -53,7 +54,7 @@ func TestPostKeyValue(t *testing.T) {
 	newKeyValue := "key=name&value=shubham"
 
 	gin.SetMode(gin.ReleaseMode)
-	router := setupRouter()
+	router := routes.SetupRouter()
 
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("POST", "/post", strings.NewReader(newKeyValue))
@@ -71,7 +72,7 @@ func TestSubscribeKey(t *testing.T) {
 	newKeyValue := "key=name"
 
 	gin.SetMode(gin.ReleaseMode)
-	router := setupRouter()
+	router := routes.SetupRouter()
 
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("POST", "/subscribe", strings.NewReader(newKeyValue))
@@ -89,7 +90,7 @@ func TestUnsubscribeKey(t *testing.T) {
 	newKeyValue := "key=name"
 
 	gin.SetMode(gin.ReleaseMode)
-	router := setupRouter()
+	router := routes.SetupRouter()
 
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("POST", "/unsubscribe", strings.NewReader(newKeyValue))
