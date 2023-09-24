@@ -18,4 +18,4 @@ ENV GIN_MODE=release
 
 EXPOSE 80
 
-CMD ["./main"]
+CMD ["/main"]
