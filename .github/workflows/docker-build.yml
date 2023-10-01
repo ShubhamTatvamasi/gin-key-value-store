@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Change String Case
         id: string
-        uses: ASzc/change-string-case-action@v1
+        uses: ASzc/change-string-case-action@v5
         with:
           string: ${{ github.repository }}
 
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v5
         with:
           images: ${{ steps.string.outputs.lowercase }}
 
