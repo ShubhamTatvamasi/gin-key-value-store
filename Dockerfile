@@ -1,21 +1,21 @@
 FROM golang:1.21.1-alpine as builder
 
+WORKDIR /app
+
 COPY . .
 
 ENV CGO_ENABLED=0
-
-ENV GOPATH=
-
-RUN go test
 
 RUN go build -o main
 
 FROM scratch
 
-COPY --from=builder /go/main .
+WORKDIR /app
+
+COPY --from=builder /app/main .
 
 ENV GIN_MODE=release
 
 EXPOSE 80
 
-CMD ["/main"]
+CMD ["./main"]
