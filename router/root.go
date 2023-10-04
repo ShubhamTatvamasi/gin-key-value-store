@@ -9,7 +9,7 @@ import (
 func root(c *gin.Context) {
 
 	// Read the contents of index.html from the embedded filesystem
-	indexHTML, err := templates.ReadFile("templates/index.html")
+	indexHTML, err := staticFiles.ReadFile("static/index.html")
 	if err != nil {
 		c.AbortWithError(http.StatusInternalServerError, err)
 		return

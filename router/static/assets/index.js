@@ -29,7 +29,7 @@ async function subscribeKey() {
     let formData = new FormData();
 
     let subscribeNewKey = document.getElementById('subscribeKey').value
-    
+
     formData.append('key', subscribeNewKey);
 
     await fetch('/subscribe', { method: 'POST', body: formData })
@@ -40,9 +40,9 @@ async function unsubscribeKey() {
 
     let formData = new FormData();
 
-    let subscribeNewKey = document.getElementById('unsubscribeKey').value
-    
-    formData.append('key', subscribeNewKey);
+    let unsubscribeKey = document.getElementById('unsubscribeKey').value
+
+    formData.append('key', unsubscribeKey);
 
     await fetch('/unsubscribe', { method: 'POST', body: formData })
 }

@@ -2,12 +2,13 @@ package router
 
 import (
 	"embed"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-//go:embed templates/*
-var templates embed.FS
+//go:embed static/*
+var staticFiles embed.FS
 
 // Store all key value pairs in map
 var store = map[string]string{}
@@ -21,8 +22,7 @@ func SetupRouter() *gin.Engine {
 	// Route the gin web server
 	r := gin.Default()
 
-	// Serve static files
-	r.Static("/assets", "./templates/assets")
+	r.StaticFS("/static", http.FS(staticFiles))
 
 	// Home page
 	r.GET("/", root)
