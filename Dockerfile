@@ -10,8 +10,6 @@ RUN go build -o main
 
 FROM scratch
 
-WORKDIR /app
-
 COPY --from=builder /app/main .
 
 ENV GIN_MODE=release
